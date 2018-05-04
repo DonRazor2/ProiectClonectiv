@@ -1,5 +1,15 @@
-import QtQuick 2.0
+import QtQuick 2.9
 
-Item {
 
+Rectangle {
+    visible: true
+    color: "green"
+    width: 45
+    height: 400
+
+    MouseArea {
+        anchors.fill: parent
+        onClicked: console.log("Drum Clicked")
+    }
 }
+

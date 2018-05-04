@@ -7,15 +7,17 @@ class Masina : public QObject
 {
     Q_OBJECT
 
-    enum Orientare
+public:
+    typedef enum
     {
         INAINTE = 0,
         //STANGA,
         //DREAPTA
-    };
+    }Orientare;
 
 public:
-    explicit Masina(QObject *parent = nullptr);
+    explicit Masina();
+    Masina(Orientare orientare, QString pozaUrl);
 signals:
 
 public slots:

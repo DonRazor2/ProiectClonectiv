@@ -2,21 +2,23 @@
 #define DRUM_H
 
 #include <QObject>
+#include <QQueue>
 #include "masina.h"
 
 class Drum : public QObject
 {
     Q_OBJECT
 public:
-    explicit Drum(QObject *parent = nullptr);
-    void infoDrum();
+    Drum();
+    void info();
+    void addMasina(Masina *masinaAdaugata);
+    Masina* removeMasina();
 signals:
 
 public slots:
 
 private:
-    Masina mMasini[3]; // TO DO : COADA MASINI
-    bool mSemaforVerde;
+    QQueue <Masina*> mMasini; // TO DO : COADA MASINI
 };
 
 #endif // DRUM_H

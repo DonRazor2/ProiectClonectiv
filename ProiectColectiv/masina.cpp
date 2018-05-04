@@ -1,9 +1,16 @@
 #include "masina.h"
 #include <QDebug>
 
-Masina::Masina(QObject *parent) : QObject(parent)
+Masina::Masina()
 {
     mOrientare = Orientare::INAINTE;
     mPozaUrl = "";
     qInfo() << "Masina Creata, Masini create pana in punctul asta : ";
+}
+
+Masina::Masina(Orientare orientare, QString pozaUrl)
+    : mOrientare(orientare),
+      mPozaUrl(pozaUrl)
+{
+
 }

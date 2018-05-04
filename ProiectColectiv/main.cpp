@@ -11,12 +11,18 @@ int main(int argc, char *argv[])
 
     Drum drume [8];
     Intersectie intersectie;
-    for(int i = 0; i < 8;)
+    for(int i = 0; i < 8; i++)
     {
         intersectie.connectareDrum(i, &drume[i]);
-        i++;
-        intersectie.mPuncteDeConectare[i]->infoDrum();
     }
+    drume[7].addMasina(nullptr);
+    intersectie.info();
+
+    drume[0].addMasina(nullptr);
+    drume[2].addMasina(nullptr);
+    intersectie.intrareMasina(2 ,Masina::INAINTE);
+
+    intersectie.info();
 
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
