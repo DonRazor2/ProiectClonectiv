@@ -3,5 +3,6 @@
         <file>main.qml</file>
         <file>Drum.qml</file>
         <file>DrumRotit.qml</file>
+        <file>Intersectie.qml</file>
     </qresource>
 </RCC>
