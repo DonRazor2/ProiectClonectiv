@@ -18,6 +18,7 @@ Rectangle {
         id: drum_jos_stanga
         anchors.left: intersectie.left
         anchors.top: intersectie.bottom
+        rotation: 180
 
     }
 
@@ -25,7 +26,6 @@ Rectangle {
         id: drum_jos_dreapta
         anchors.right: intersectie.right
         anchors.top: intersectie.bottom
-
     }
 
     Drum {
@@ -39,7 +39,6 @@ Rectangle {
         id: drum_sus_dreapta
         anchors.right: intersectie.right
         anchors.bottom: intersectie.top
-        rotation: 180
     }
 
     DrumRotit {

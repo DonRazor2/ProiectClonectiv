@@ -2,6 +2,7 @@ import QtQuick 2.9
 
 
 Rectangle {
+    id: window
     visible: true
     color: "green"
     width: 45
@@ -14,7 +15,6 @@ Rectangle {
         spacing: 5
         interactive: false
 
-
         model: ListModel {
             id: listModel_example
             ListElement { name: "Car"; }
@@ -22,7 +22,7 @@ Rectangle {
         }
         delegate: Item {
             height: 35
-            width: 40
+            width: 40 //hardcoded
             anchors.left: parent.left
             anchors.right: parent.right
             Rectangle {
@@ -31,12 +31,12 @@ Rectangle {
             }
         }
         displaced: Transition {
-            NumberAnimation { properties: "y"; duration: 500
+            NumberAnimation { properties: "y"; duration: 1250
             }
         }
 
         add: Transition {
-            NumberAnimation { properties: "y"; from:lista_de_masini.height + 50 ; duration: 500
+            NumberAnimation { properties: "y"; from:lista_de_masini.height + 100 ; duration: 1250
             }
         }
         MouseArea {

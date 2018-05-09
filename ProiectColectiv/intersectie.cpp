@@ -1,37 +1,54 @@
 #include "intersectie.h"
 #include <QDebug>
+#include <QPair>
 
 Intersectie::Intersectie()
 {
     qInfo() << "Intersectie creata";
 }
 
-void Intersectie::connectareDrum(int punctConectare, Drum *drumConectat)
+void Intersectie::connectareDrum(QString numeDrum, Drum* drumConectat)
 {
-    mPuncteDeConectare[punctConectare] = new PunctConectare(drumConectat);
+    QPair<QString, PunctConectare*> newPair = qMakePair(numeDrum, new PunctConectare(drumConectat));
+    mPuncteDeConectare.append(newPair);
     qInfo() << "Drum Conectat!";
 }
 
-void Intersectie::intrareMasina(int punctConectare, Masina::Orientare intentieDeMers)
+void Intersectie::intrareMasina(QString numeDrum, Masina* masinaAdaugata)
 {
-    if (!mPuncteDeConectare[punctConectare] -> mCuloareSemafor)
+    for(QPair<QString, PunctConectare*> pair : mPuncteDeConectare)
     {
-        switch (intentieDeMers) {
-        case Masina::INAINTE:
-            mPuncteDeConectare[0] -> mDrumConectat -> addMasina(mPuncteDeConectare[punctConectare] -> mDrumConectat -> removeMasina());
-            break;
-        default:
-            break;
+        if(pair.first == numeDrum)
+        {
+            pair.second->mDrumConectat->addMasina(masinaAdaugata);
+            return;
         }
     }
+}
+
+Masina *Intersectie::iesireMasina(QString numeDrum)
+{
+    for(QPair<QString, PunctConectare*> pair : mPuncteDeConectare)
+    {
+        if(pair.first == numeDrum)
+        {
+            return pair.second->mDrumConectat->removeMasina();
+        }
+    }
+    return nullptr;
+}
+
+void Intersectie::mutareMasina(Masina *masinaMutata)
+{
+    // to do
 }
 
 void Intersectie::info()
 {
     qInfo() << "Info Intersectie : \n";
-    for (int i = 0 ; i < 8 ; i++)
+    for(QPair<QString, PunctConectare*> pair : mPuncteDeConectare)
     {
-        qInfo() << mPuncteDeConectare[i] -> mCuloareSemafor << " " ;
-        mPuncteDeConectare[i] -> mDrumConectat -> info();
+        qInfo() << pair.first << " " << pair.second->mCuloareSemafor;
+        pair.second->mDrumConectat->info();
     }
 }

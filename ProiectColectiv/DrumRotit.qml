@@ -12,4 +12,3 @@ Rectangle {
         onClicked: console.log("Drum Clicked")
     }
 }
-

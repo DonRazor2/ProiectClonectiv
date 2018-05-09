@@ -2,12 +2,15 @@
 #define INTERSECTIE_H
 
 #include <QObject>
+#include <QMap>
+#include <QPair>
 #include "drum.h"
 #include "masina.h"
 
 class Intersectie : public QObject
 {
     Q_OBJECT
+
     struct PunctConectare
     {
         PunctConectare(Drum* drum)
@@ -19,10 +22,14 @@ class Intersectie : public QObject
         Drum* mDrumConectat;
     };
 
+    QMap<QString, PunctConectare*> ConectariIntersectie;
+
 public:
     explicit Intersectie();
-    void connectareDrum(int punctConectare, Drum* drumConectat);
-    void intrareMasina(int punctConectare, Masina::Orientare intentieDeMers);
+    void connectareDrum(QString numeDrum, Drum* drumConectat);
+    void intrareMasina(QString numeDrum, Masina* masinaAdaugata);
+    Masina* iesireMasina(QString numeDrum);
+    void mutareMasina(Masina* masinaMutata);
     void info();
 
 signals:
@@ -30,7 +37,7 @@ signals:
 public slots:
 
 public:
-    PunctConectare* mPuncteDeConectare [8];
+    QList<QPair<QString, PunctConectare*>> mPuncteDeConectare;
 };
 
 #endif // INTERSECTIE_H
