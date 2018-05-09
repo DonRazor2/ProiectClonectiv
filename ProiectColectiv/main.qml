@@ -10,6 +10,7 @@ Window {
     Rectangle {
         id: main_window
         visible: true
+        color: "#55FF66"
         width: parent.width
         height: parent.height
 
@@ -21,6 +22,17 @@ Window {
         Intersectie {
             id: intersectie_dreapta
             anchors.left: intersectie_stanga.right
+        }
+
+        Image {
+            visible: true
+            id: university
+            source: "university.png"
+            x: 260
+            y: 50
+            height: 150
+            width: 200
+            fillMode: Image.PreserveAspectCrop
         }
     }
 }

@@ -18,9 +18,6 @@ public:
 public:
     explicit Masina();
     Masina(Orientare orientare, QString pozaUrl);
-signals:
-
-public slots:
 
 private:
     Orientare mOrientare;

@@ -3,7 +3,7 @@ import QtQuick 2.9
 Rectangle {
     id: window
     visible: true
-    color: "green"
+    color: "grey"
     width: 25
     height: 200
 
@@ -34,12 +34,12 @@ Rectangle {
         }
 
         displaced: Transition {
-            NumberAnimation { properties: "y"; duration: 1250
+            NumberAnimation { properties: "y"; duration: 1250; easing.type: Easing.InOutQuint
             }
         }
 
         add: Transition {
-            NumberAnimation { properties: "y"; from:lista_de_masini.height + 100 ; duration: 1250
+            NumberAnimation { properties: "y"; from:lista_de_masini.height ; duration: 1250; easing.type: Easing.InOutQuint
             }
         }
 

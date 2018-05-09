@@ -13,9 +13,6 @@ public:
     void info();
     void addMasina(Masina *masinaAdaugata);
     Masina* removeMasina();
-signals:
-
-public slots:
 
 private:
     QQueue <Masina*> mMasini; // TO DO : COADA MASINI

@@ -6,5 +6,6 @@
         <file>Intersectie.qml</file>
         <file>topViewCarIcon.png</file>
         <file>RedCar.ico</file>
+        <file>university.png</file>
     </qresource>
 </RCC>

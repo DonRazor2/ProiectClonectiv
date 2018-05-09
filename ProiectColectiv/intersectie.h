@@ -23,6 +23,7 @@ class Intersectie : public QObject
         QList<Masina::Orientare> mOrientareDrum;
     };
 
+    //to do
     QMap<QString, PunctConectare*> ConectariIntersectie
     {
         {"SudVest-1stLane", nullptr},
@@ -40,11 +41,7 @@ public:
     void mutareMasina(QString drumIesire, QString drumIntrare);
     void info();
 
-signals:
-
-public slots:
-
-public:
+private:
     QList<QPair<QString, PunctConectare*>> mPuncteDeConectare;
 };
 

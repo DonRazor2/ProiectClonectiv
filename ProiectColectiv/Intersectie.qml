@@ -4,6 +4,7 @@ Rectangle {
     visible: true
     width: 450
     height: 450
+    color: "#55FF66"
 
     Rectangle {
         id: intersectie
