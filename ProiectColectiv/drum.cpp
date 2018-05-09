@@ -18,7 +18,7 @@ void Drum::addMasina(Masina *masinaAdaugata)
 
 Masina* Drum::removeMasina()
 {
-    Masina* retVal;
+    Masina* retVal(nullptr);
     if(!mMasini.isEmpty())
     {
         retVal = mMasini.front();

@@ -2,15 +2,15 @@ import QtQuick 2.9
 
 Rectangle {
     visible: true
-    width: 900
-    height: 900
+    width: 450
+    height: 450
 
     Rectangle {
         id: intersectie
         visible: true
         color: "black"
-        width: 100
-        height: 100
+        width: 50
+        height: 50
         anchors.centerIn: parent
     }
 
@@ -59,5 +59,4 @@ Rectangle {
         anchors.right: intersectie.left
         anchors.bottom: intersectie.bottom
     }
-
 }

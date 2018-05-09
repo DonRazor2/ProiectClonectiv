@@ -4,5 +4,7 @@
         <file>Drum.qml</file>
         <file>DrumRotit.qml</file>
         <file>Intersectie.qml</file>
+        <file>topViewCarIcon.png</file>
+        <file>RedCar.ico</file>
     </qresource>
 </RCC>

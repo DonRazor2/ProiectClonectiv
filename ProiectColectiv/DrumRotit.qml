@@ -4,8 +4,8 @@ import QtQuick 2.9
 Rectangle {
     visible: true
     color: "green"
-    width: 400
-    height: 45
+    width: 200
+    height: 25
 
     MouseArea {
         anchors.fill: parent

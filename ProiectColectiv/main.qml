@@ -4,8 +4,8 @@ import QtQuick.Window 2.2
 
 Window {
     visible: true
-    width: 1800
-    height: 900
+    width: 900
+    height: 450
 
     Rectangle {
         id: main_window

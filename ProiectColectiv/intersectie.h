@@ -20,16 +20,24 @@ class Intersectie : public QObject
 
         bool mCuloareSemafor = false;
         Drum* mDrumConectat;
+        QList<Masina::Orientare> mOrientareDrum;
     };
 
-    QMap<QString, PunctConectare*> ConectariIntersectie;
+    QMap<QString, PunctConectare*> ConectariIntersectie
+    {
+        {"SudVest-1stLane", nullptr},
+        {"SudVest-2ndLane", nullptr},
+        {"NordVest-1stLane", nullptr},
+        {"NordVest-2ndLane", nullptr},
+        // to do finish
+    };
 
 public:
     explicit Intersectie();
     void connectareDrum(QString numeDrum, Drum* drumConectat);
     void intrareMasina(QString numeDrum, Masina* masinaAdaugata);
     Masina* iesireMasina(QString numeDrum);
-    void mutareMasina(Masina* masinaMutata);
+    void mutareMasina(QString drumIesire, QString drumIntrare);
     void info();
 
 signals:

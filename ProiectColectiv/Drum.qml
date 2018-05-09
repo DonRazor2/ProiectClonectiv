@@ -1,18 +1,17 @@
 import QtQuick 2.9
 
-
 Rectangle {
     id: window
     visible: true
     color: "green"
-    width: 45
-    height: 400
+    width: 25
+    height: 200
 
     ListView {
         id: lista_de_masini
         visible: true
         anchors.fill: parent
-        spacing: 5
+        spacing: 3
         interactive: false
 
         model: ListModel {
@@ -20,16 +19,20 @@ Rectangle {
             ListElement { name: "Car"; }
             ListElement { name: "Car2"; }
         }
+
         delegate: Item {
-            height: 35
-            width: 40 //hardcoded
+            height: 20
+            width: 15 //hardcoded
             anchors.left: parent.left
             anchors.right: parent.right
-            Rectangle {
-                color: "red"
+            Image {
+                source: "RedCar.ico"
+                fillMode: Image.PreserveAspectFit
                 anchors.fill: parent
+                rotation: 90
             }
         }
+
         displaced: Transition {
             NumberAnimation { properties: "y"; duration: 1250
             }
@@ -39,11 +42,11 @@ Rectangle {
             NumberAnimation { properties: "y"; from:lista_de_masini.height + 100 ; duration: 1250
             }
         }
+
         MouseArea {
-            onWheel: listModel_example.append(ListElement)
-            onDoubleClicked: listModel_example.remove(0)
+            onClicked: listModel_example.append(ListElement)
+            onPressAndHold: listModel_example.remove(0)
             anchors.fill: parent
         }
     }
-
 }

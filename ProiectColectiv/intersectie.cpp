@@ -20,8 +20,11 @@ void Intersectie::intrareMasina(QString numeDrum, Masina* masinaAdaugata)
     {
         if(pair.first == numeDrum)
         {
-            pair.second->mDrumConectat->addMasina(masinaAdaugata);
-            return;
+            if(masinaAdaugata != nullptr)
+            {
+                pair.second->mDrumConectat->addMasina(masinaAdaugata);
+                return;
+            }
         }
     }
 }
@@ -38,9 +41,9 @@ Masina *Intersectie::iesireMasina(QString numeDrum)
     return nullptr;
 }
 
-void Intersectie::mutareMasina(Masina *masinaMutata)
+void Intersectie::mutareMasina(QString drumIesire, QString drumIntrare)
 {
-    // to do
+    intrareMasina(drumIntrare, iesireMasina(drumIesire));
 }
 
 void Intersectie::info()
