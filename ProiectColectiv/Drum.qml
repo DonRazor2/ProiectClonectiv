@@ -17,7 +17,6 @@ Rectangle {
         model: ListModel {
             id: listModel_example
             ListElement { name: "Car"; }
-            ListElement { name: "Car2"; }
         }
 
         delegate: Item {
@@ -44,7 +43,11 @@ Rectangle {
         }
 
         MouseArea {
-            onClicked: listModel_example.append(ListElement)
+            onClicked: {
+                if(listModel_example.count <= 7) {
+                listModel_example.append(ListElement)
+                }
+            }
             onPressAndHold: listModel_example.remove(0)
             anchors.fill: parent
         }

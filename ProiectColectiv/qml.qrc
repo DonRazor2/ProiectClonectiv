@@ -7,5 +7,7 @@
         <file>topViewCarIcon.png</file>
         <file>RedCar.ico</file>
         <file>university.png</file>
+        <file>grassTexture.jpg</file>
+        <file>green-grass-texture.jpg</file>
     </qresource>
 </RCC>

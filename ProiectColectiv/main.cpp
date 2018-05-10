@@ -19,9 +19,11 @@ int main(int argc, char *argv[])
     }
 
     Intersectie intersectie;
-    intersectie.connectareDrum("Drum Principal Stanga", &drumuri[0]);
-    intersectie.connectareDrum("Drum Principal Dreapta", &drumuri[1]);
-    intersectie.connectareDrum("Drum Secundar", &drumuri[2]);
+    intersectie.connectareDrum("Drum Principal Stanga", &drumuri[0], {Masina::INAINTE});
+    intersectie.connectareDrum("Drum Principal Dreapta", &drumuri[1], {Masina::INAINTE});
+    intersectie.connectareDrum("Drum Secundar", &drumuri[2], {Masina::INAINTE});
+
+    intersectie.legareDrum("Drum Secundar", "Drum Principal Dreapta", Masina::INAINTE);
 
     intersectie.info();
 

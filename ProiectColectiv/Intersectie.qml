@@ -45,19 +45,40 @@ Rectangle {
     DrumRotit {
         anchors.left: intersectie.right
         anchors.bottom: intersectie.bottom
+        Drum {
+            anchors.centerIn: parent
+            rotation: 90
+            Component.onCompleted: height = height - 5
+        }
     }
 
     DrumRotit {
         anchors.left: intersectie.right
         anchors.top: intersectie.top
+        Drum {
+            anchors.centerIn: parent
+            rotation: 270
+            Component.onCompleted: height = height - 5
+        }
     }
+
     DrumRotit {
         anchors.right: intersectie.left
         anchors.top: intersectie.top
+        Drum {
+            anchors.centerIn: parent
+            rotation: 270
+            Component.onCompleted: height = height - 5
+        }
     }
 
     DrumRotit {
         anchors.right: intersectie.left
         anchors.bottom: intersectie.bottom
+        Drum {
+            anchors.centerIn: parent
+            rotation: 90
+            Component.onCompleted: height = height - 5
+        }
     }
 }
