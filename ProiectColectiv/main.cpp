@@ -35,9 +35,9 @@ int main(int argc, char *argv[])
         intersectie.connectareDrum(pair.first, pair.second, {Masina::INAINTE});
     }
 
-    intersectie.legareDrum("Legatura1", "Drum Principal Dreapta", "Drum Secundar", Masina::INAINTE);
-    intersectie.legareDrum("Legatura2", "Drum Principal Dreapta", "Drum Principal Stanga", Masina::INAINTE);
-    intersectie.legareDrum("Legatura3", "...", "Drum Principal Dreapta", Masina::INAINTE);
+    intersectie.legareDrum("Legatura1", "5", "1", Masina::INAINTE);   // din drumul 1 iese masina si intra in drumul 5
+    intersectie.legareDrum("Legatura2", "6", "2", Masina::INAINTE);   // din drumul 2 iese masina si intra in drumul 6
+    intersectie.legareDrum("Legatura3", "...", "5", Masina::INAINTE); // din drumul 5 iese masina si iese din peisaj
 
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
