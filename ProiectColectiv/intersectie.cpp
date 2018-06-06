@@ -93,14 +93,16 @@ void Intersectie::info()
         qInfo() << pair.first;
         pair.second->mDrumConectat->info();
     }
+    qInfo() << "\n\n ---------- ";
+}
 
+void Intersectie::infoLegaturi()
+{
     qInfo() << " Legaturi : ";
     for(LegaturaDrumuri legatura : mLegaturiDrumuri)
     {
-        //to do
         qInfo() << legatura.drumIntrare << " - " << legatura.drumIesire << " cu orientare INAINTE ";
     }
-    qInfo() << " ----- ";
 }
 
 void Intersectie::start()
@@ -113,11 +115,10 @@ void Intersectie::tick()
     static quint16 v = qrand() % 300;
     for(QPair<QString, PunctConectare*> pair : mPuncteDeConectare)
     {
-        if(v % 5 == 0)
+        if(v % 2 == 0)
         {
             Masina* newCar = new Masina();
             pair.second->mDrumConectat->addMasina(newCar);
-            qInfo() << v;
             qInfo() << "Masina adaugata la drumul : " << pair.first;
         }
         v = qrand() % 300;

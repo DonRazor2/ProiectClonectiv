@@ -53,6 +53,7 @@ int main(int argc, char *argv[])
     intersectie.legareDrum("13 -> ?", "13", "?", Masina::INAINTE);
     intersectie.legareDrum("14 -> ?", "14", "?", Masina::INAINTE);
 
+    intersectie.start();
 
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));

@@ -41,6 +41,7 @@ public:
     void legareDrum(QString numeLegatura, QString drumIntrare, QString drumIesire, Masina::Orientare orientare);
     void schimbareSemafor(QString numeDrum);
     void info();
+    void infoLegaturi();
     void start();
 
 public slots:
