@@ -1,10 +1,18 @@
 #include "intersectie.h"
 #include <QDebug>
 #include <QPair>
+#include <QTime>
+#include <QRandomGenerator>
 
 Intersectie::Intersectie()
 {
     qInfo() << "Intersectie creata";
+    timer = new QTimer(this);
+    timer->setInterval(3000);
+    connect(timer, SIGNAL(timeout()), this, SLOT(tick()));
+
+    QTime time = QTime::currentTime();
+    qsrand((quint16)time.msec());
 }
 
 void Intersectie::connectareDrum(QString numeDrum, Drum* drumConectat, QList<Masina::Orientare> orientare)
@@ -35,22 +43,46 @@ Masina *Intersectie::iesireMasina(QString numeDrum)
     {
         if(pair.first == numeDrum)
         {
-            return pair.second->mDrumConectat->removeMasina();
+            if(pair.second->mDrumConectat->getSemafor())
+            {
+                return pair.second->mDrumConectat->removeMasina();
+            }
         }
     }
     return nullptr;
 }
 
-void Intersectie::mutareMasina(QString drumIesire, QString drumIntrare)
+void Intersectie::mutareMasina(QString numeLegatura)
 {
-    // to do : check for valid connection betwen roads
-    intrareMasina(drumIntrare, iesireMasina(drumIesire));
+    for(LegaturaDrumuri legatura : mLegaturiDrumuri)
+    {
+        if (legatura.numeLegatura == numeLegatura)
+        {
+            Masina* masinaIesita = iesireMasina(legatura.drumIesire);
+            if(masinaIesita != nullptr)
+            {
+                intrareMasina(legatura.drumIntrare, masinaIesita);
+            }
+        }
+    }
 }
 
-void Intersectie::legareDrum(QString drumIntrare, QString drumIesire, Masina::Orientare orientare)
+void Intersectie::legareDrum(QString numeLegatura, QString drumIntrare, QString drumIesire, Masina::Orientare orientare)
 {
-    LegaturaDrumuri nouaLegatura {drumIntrare, drumIesire, orientare};
+    //to do : check if it dies.
+    LegaturaDrumuri nouaLegatura {numeLegatura ,drumIntrare, drumIesire, orientare};
     mLegaturiDrumuri.append(nouaLegatura);
+}
+
+void Intersectie::schimbareSemafor(QString numeDrum)
+{
+    for(QPair<QString, PunctConectare*> pair : mPuncteDeConectare)
+    {
+        if(pair.first == numeDrum)
+        {
+            pair.second->mDrumConectat->changeSemafor();
+        }
+    }
 }
 
 void Intersectie::info()
@@ -58,7 +90,7 @@ void Intersectie::info()
     qInfo() << "Info Intersectie :";
     for(QPair<QString, PunctConectare*> pair : mPuncteDeConectare)
     {
-        qInfo() << pair.first << " " << pair.second->mCuloareSemafor;
+        qInfo() << pair.first;
         pair.second->mDrumConectat->info();
     }
 
@@ -69,4 +101,38 @@ void Intersectie::info()
         qInfo() << legatura.drumIntrare << " - " << legatura.drumIesire << " cu orientare INAINTE ";
     }
     qInfo() << " ----- ";
+}
+
+void Intersectie::start()
+{
+    timer->start();
+}
+
+void Intersectie::tick()
+{
+    static quint16 v = qrand() % 300;
+    for(QPair<QString, PunctConectare*> pair : mPuncteDeConectare)
+    {
+        if(v % 5 == 0)
+        {
+            Masina* newCar = new Masina();
+            pair.second->mDrumConectat->addMasina(newCar);
+            qInfo() << v;
+            qInfo() << "Masina adaugata la drumul : " << pair.first;
+        }
+        v = qrand() % 300;
+    }
+
+    for(LegaturaDrumuri legatura : mLegaturiDrumuri)
+    {
+        Masina* masinaIesita = iesireMasina(legatura.drumIesire);
+        if(masinaIesita != nullptr)
+        {
+            intrareMasina(legatura.drumIntrare, masinaIesita);
+        }
+    }
+
+    info();
+
+    timer->start();
 }

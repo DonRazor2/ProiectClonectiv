@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QMap>
 #include <QPair>
+#include <QTimer>
 #include "drum.h"
 #include "masina.h"
 
@@ -19,12 +20,13 @@ class Intersectie : public QObject
             mOrientareDrum.append(orientare);
         }
 
-        bool mCuloareSemafor = false;
         Drum* mDrumConectat;
         QList<Masina::Orientare> mOrientareDrum;
     };
+
     struct LegaturaDrumuri
     {
+        QString numeLegatura;
         QString drumIntrare;
         QString drumIesire;
         Masina::Orientare orientare;
@@ -35,13 +37,21 @@ public:
     void connectareDrum(QString numeDrum, Drum* drumConectat, QList<Masina::Orientare> orientare);
     void intrareMasina(QString numeDrum, Masina* masinaAdaugata);
     Masina* iesireMasina(QString numeDrum);
-    void mutareMasina(QString drumIesire, QString drumIntrare);
-    void legareDrum(QString drumIntrare, QString drumIesire, Masina::Orientare orientare);
+    void mutareMasina(QString numeLegatura);
+    void legareDrum(QString numeLegatura, QString drumIntrare, QString drumIesire, Masina::Orientare orientare);
+    void schimbareSemafor(QString numeDrum);
     void info();
+    void start();
+
+public slots:
+    void tick();
 
 private:
     QList<QPair<QString, PunctConectare*>> mPuncteDeConectare;
     QList<LegaturaDrumuri> mLegaturiDrumuri;
+
+
+    QTimer *timer;
 };
 
 #endif // INTERSECTIE_H
