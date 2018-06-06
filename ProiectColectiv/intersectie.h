@@ -27,8 +27,8 @@ class Intersectie : public QObject
     struct LegaturaDrumuri
     {
         QString numeLegatura;
-        QString drumIntrare;
         QString drumIesire;
+        QString drumIntrare;
         Masina::Orientare orientare;
     };
 

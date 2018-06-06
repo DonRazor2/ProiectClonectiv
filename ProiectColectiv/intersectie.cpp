@@ -67,10 +67,10 @@ void Intersectie::mutareMasina(QString numeLegatura)
     }
 }
 
-void Intersectie::legareDrum(QString numeLegatura, QString drumIntrare, QString drumIesire, Masina::Orientare orientare)
+void Intersectie::legareDrum(QString numeLegatura, QString drumIesire, QString drumIntrare, Masina::Orientare orientare)
 {
     //to do : check if it dies.
-    LegaturaDrumuri nouaLegatura {numeLegatura ,drumIntrare, drumIesire, orientare};
+    LegaturaDrumuri nouaLegatura {numeLegatura ,drumIesire, drumIntrare, orientare};
     mLegaturiDrumuri.append(nouaLegatura);
 }
 
